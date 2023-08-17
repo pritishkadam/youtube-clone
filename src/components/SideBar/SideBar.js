@@ -1,6 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import menuConfig from './menuConfig';
+import MenuButtonsList from './MenuButtonsList';
+import SignInButton from '../Header/SignInButton';
+import exploreSectionConfig from './exploreSectionConfig';
+import youtubeSectionConfig from './youtubeSectionConfig';
 
 const SideBar = () => {
   const isMenuOpen = useSelector((store) => store.nav.isMenuOpen);
@@ -8,30 +12,36 @@ const SideBar = () => {
   // Early Return
   if (!isMenuOpen) return null;
 
+  const menuItems = menuConfig();
+  const exploreSectionItems = exploreSectionConfig();
+  const youtubeSectionItems = youtubeSectionConfig();
+  
   return (
-    <div className='w-48 p-4 border'>
+    <nav className='w-56 py-3 max-h-screen overflow-hidden hover:overflow-y-scroll sticky top-14 pb-14'>
       <ul>
-        <li className='m-1'>
-          <Link to='/'>Home</Link>
-        </li>
-        <li className='m-1'>Shorts</li>
-        <li className='m-1'>Videos</li>
-        <li className='m-1'>Live</li>
+        <>
+          {menuItems && <MenuButtonsList listItems={menuItems} />}
+          <SignIn />
+          <hr className='my-3' />
+          {exploreSectionItems && (
+            <MenuButtonsList sectionTitle={'Explore'} listItems={exploreSectionItems} />
+          )}
+          {youtubeSectionItems && (
+            <MenuButtonsList sectionTitle={'More from YouTube'} listItems={youtubeSectionItems} />
+          )}
+        </>
       </ul>
-      <h1 className='font-bold my-4'>Subscription</h1>
-      <ul>
-        <li className='m-1'>Music</li>
-        <li className='m-1'>Sports</li>
-        <li className='m-1'>Gaming</li>
-        <li className='m-1'>Movies</li>
-      </ul>
-      <h1 className='font-bold my-4'>Watch Later</h1>
-      <ul>
-        <li className='m-1'>Documentaries</li>
-        <li className='m-1'>Horror</li>
-        <li className='m-1'>Mystery</li>
-        <li className='m-1'>Movies</li>
-      </ul>
+    </nav>
+  );
+};
+
+const SignIn = () => {
+  return (
+    <div className='w-full flex flex-col font-roboto px-6 py-1 gap-4'>
+      <h3 className='text-sm pr-2'>
+        Sign in to like videos, comment, and subscribe.
+      </h3>
+      <SignInButton />
     </div>
   );
 };

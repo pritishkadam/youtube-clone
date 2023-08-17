@@ -21,17 +21,17 @@ const SearchBar = (props) => {
   };
 
   return (
-    <div id='searchBox' className='flex flex-row'>
+    <div id='searchBox' className='flex flex-row flex-1 w-full'>
       <div
         onBlur={() => {
           setShowIcon(false);
+          // setShowSuggestions(false);
         }}
-        className='w-96 ml-6 h-10 flex flex-1 leading-6 font-normal border border-[#d3d3d3] outline-none focus-visible:border focus-visible:border-[#1c62b9] bg-[#f8f8f8] pl-4 pr-1 rounded-l-full'
+        className=' h-10 flex flex-1 leading-6 font-normal border border-[#d3d3d3] outline-none focus-visible:border focus-visible:border-[#1c62b9] bg-[#f8f8f8] pl-4 pr-1 rounded-l-full'
       >
-        {showIcon && <img alt='search' src={search} className='w-5 border mr-10' />}
         <input
           type='text'
-          className='w-96 h-10 bg-transparent leading-6 font-normal outline-none pr-1'
+          className='w-16 sm:w-28 md:w-32 lg:w-48 xl:w-48 h-10 bg-transparent leading-6 font-normal outline-none pr-1'
           value={hoveredText ? hoveredText : searchQuery}
           onChange={handleOnChange}
           onFocus={() => {

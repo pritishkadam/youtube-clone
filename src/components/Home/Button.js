@@ -5,7 +5,7 @@ const Button = (props) => {
 
   return (
     <div>
-      <button className='bg-black text-white m-3 px-4 py-2 rounded-full'>
+      <button className='bg-black text-sm h-8 whitespace-nowrap text-white m-2 mb-1 px-3 rounded-lg'>
         {name}
       </button>
     </div>

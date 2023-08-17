@@ -27,7 +27,7 @@ const SearchSuggestionsList = (props) => {
       {data && data.length !== 0 && (
         <div
           id='searchSuggestion'
-          className='absolute top-12 w-96 ml-8 mt-1 bg-white border rounded-xl'
+          className='absolute top-12 w-96 mt-1 bg-white border rounded-xl'
         >
           {data?.map((element) => (
             <div
@@ -42,7 +42,7 @@ const SearchSuggestionsList = (props) => {
                 handleSearchClick(element);
               }}
             >
-              <Link to={`/results?search_query=${element}`}>
+              <Link key={element} to={`/results?search_query=${element}`}>
                 <SearchSuggestionRow
                   element={element}
                   isQuerySearched={isQuerySearched}
