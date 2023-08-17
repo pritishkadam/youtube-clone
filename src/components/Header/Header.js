@@ -9,6 +9,8 @@ import SearchSuggestionsList from './SearchSuggestionsList';
 import { searchedQueries } from '../../util/searchedQuerySlice';
 import Menu from './Menu';
 import Logo from './Logo';
+import SignInButton from './SignInButton';
+import mic from './../../assets/mic-icon.svg';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -77,7 +79,7 @@ const Header = () => {
   };
 
   return (
-    <div className='flex justify-between items-center bg-white px-4 font-roboto h-14'>
+    <div className='flex fixed top-0 w-full z-20 justify-between items-center bg-white px-4 font-roboto h-14'>
       {/* Menu and Logo */}
       <div id='menu-and-logo' className='flex mt-1'>
         <Menu toggleMenuHandler={toggleMenuHandler} />
@@ -85,32 +87,48 @@ const Header = () => {
       </div>
 
       {/* Search Bar */}
-      <div id='searchBar' className='flex flex-col w-1/2 ml-10 justify-center'>
-        <SearchBar
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-          showSuggestions={showSuggestions}
-          setShowSuggestions={setShowSuggestions}
-          handleSearchClick={handleSearchClick}
-          setCallAPI={setCallAPI}
-          hoveredText={hoveredText}
-        />
-        {showSuggestions && (
-          <SearchSuggestionsList
+      <div
+        id='center'
+        className='flex w-8/12 justify-center gap-4'
+      >
+        <div
+          id='searchBar'
+          className='flex flex-col w-8/12 justify-center'
+        >
+          <SearchBar
             searchQuery={searchQuery}
-            suggestionsList={suggestions}
-            setCallAPI={setCallAPI}
             setSearchQuery={setSearchQuery}
+            showSuggestions={showSuggestions}
+            setShowSuggestions={setShowSuggestions}
             handleSearchClick={handleSearchClick}
-            setHoveredText={setHoveredText}
-            searchedResults={searchedResults}
+            setCallAPI={setCallAPI}
+            hoveredText={hoveredText}
           />
-        )}
+          {showSuggestions && (
+            <SearchSuggestionsList
+              searchQuery={searchQuery}
+              suggestionsList={suggestions}
+              setCallAPI={setCallAPI}
+              setSearchQuery={setSearchQuery}
+              handleSearchClick={handleSearchClick}
+              setHoveredText={setHoveredText}
+              searchedResults={searchedResults}
+            />
+          )}
+        </div>
+        <button
+          onClick={() => {
+            handleSearchClick(searchQuery);
+          }}
+          className='w-10 h-10 bg-[#f8f8f8] px-2 py-2 rounded-full cursor-pointer'
+        >
+          <img alt='search' src={mic} className='w-5 m-auto' />
+        </button>
       </div>
 
       {/* Account Settings */}
       <div id='settings' className='flex mr-4'>
-        <img alt='profile' src={profile} className='w-8 cursor-pointer' />
+        <SignInButton />
       </div>
     </div>
   );

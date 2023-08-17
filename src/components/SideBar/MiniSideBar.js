@@ -2,7 +2,7 @@ import React from 'react';
 
 const MiniSideBar = () => {
   return (
-    <div className='w-48 p-4 border'>
+    <div className='w-48 p-4'>
       <h1 className='font-bold'>MiniSideBar</h1>
       <ul>
         <li className='m-1'>Home</li>
