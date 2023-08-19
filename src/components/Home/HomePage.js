@@ -6,9 +6,7 @@ import { useSelector } from 'react-redux';
 const HomePage = () => {
   const isMenuOpen = useSelector((store) => store.nav.isMenuOpen);
   return (
-    <div className='flex w-5/6'>
-      {!isMenuOpen ? <MiniSideBar /> : <></>}
-      {/* <div className='w-20 h-full' /> */}
+    <div className={isMenuOpen ? 'flex w-5/6' : 'flex w-full'}>
       <HomeContainer />
     </div>
   );

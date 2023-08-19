@@ -2,9 +2,9 @@ import React, { useCallback, useEffect, useState } from 'react';
 // import { YOUTUBE_URL } from '../../util/constants';
 import VideoCard from './VideoCard';
 import { Link } from 'react-router-dom';
-import videosConfig from './videosConfig';
 
-const VideoContainer = () => {
+const VideoContainer = (props) => {
+  const { info } = props;
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
@@ -14,8 +14,7 @@ const VideoContainer = () => {
   const getVideos = useCallback(async () => {
     // const response = await fetch(YOUTUBE_URL);
     // const data = await response.json();
-    const videos = videosConfig();
-    setVideos(videos.items);
+    setVideos(info.items);
   }, []);
 
   if (videos.length === 0) return null;
@@ -25,7 +24,7 @@ const VideoContainer = () => {
       {videos.map((video, index) => {
         return (
           <div key={video.id}>
-            <Link to={`/watch?v=${video.id}`} key={video.id}>
+            <Link to={`/watch?v=${video.id}`} key={video.id} state={video}>
               <VideoCard info={video} />
             </Link>
           </div>
