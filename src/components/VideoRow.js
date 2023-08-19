@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { parse, serialize } from 'tinyduration';
-import channel_logo from './../../assets/channel-logo.svg';
-import option from './../../assets/three-dots-option.svg';
-import getTimeStamp from './../../util/getTimeStamp';
-import { YOUTUBE_CHANNEL_API } from './../../util/constants';
-import timeSince from './../../util/timeSince';
-import VideoCardOption from './VideoCardOption';
+import channel_logo from './../assets/channel-logo.svg';
+import option from './../assets/three-dots-option.svg';
+import youtube_verified from './../assets/youtube_verified.svg';
+import getTimeStamp from './../util/getTimeStamp';
+import { YOUTUBE_CHANNEL_API } from './../util/constants';
+import VideoCardOption from './Home/VideoCardOption';
+import timeSince from '../util/timeSince';
 
-const VideoCard = (props) => {
+const VideoRow = (props) => {
   const { info } = props;
   const { id, snippet, statistics, contentDetails } = info;
   const { channelId, channelTitle, title, thumbnails, publishedAt } = snippet;
@@ -18,28 +19,11 @@ const VideoCard = (props) => {
   const [showOptionsBtn, setShowOptionsBtn] = useState(false);
   const [showOptionsMenu, setShowOptionsMenu] = useState(false);
   const [showDuration, setShowDuration] = useState(true);
-  const [logo, setLogo] = useState('');
+  const [logo, setLogo] = useState(true);
 
   const publishedDate = new Date(publishedAt);
 
   const publishedDateStr = timeSince(publishedDate);
-
-  const getChannelDetails = async () => {
-    const url = YOUTUBE_CHANNEL_API.replace('CHANNEL_ID', channelId);
-    const response = await fetch(url);
-    const data = await response.json();
-    console.log(
-      'Channel Details: ',
-      data?.items[0]?.snippet?.thumbnails?.default?.url
-    );
-    setLogo(data?.items[0]?.snippet?.thumbnails?.default?.url);
-  };
-
-  useEffect(() => {
-    getChannelDetails();
-  }, []);
-
-  console.log('INfo: ', info);
 
   const durationStr = parse(duration);
   const timeString = getTimeStamp(durationStr);
@@ -52,8 +36,8 @@ const VideoCard = (props) => {
     : 0;
 
   return (
-    <div className='w-full h-auto'>
-      <div className='w-full relative'>
+    <div className='w-full h-auto flex my-2 mx-5'>
+      <div className='w-64 h-36 relative'>
         <img
           alt='thumbnail'
           src={medium.url}
@@ -73,7 +57,7 @@ const VideoCard = (props) => {
         )}
       </div>
       <div
-        className='flex justify-start pt-2'
+        className='w-3/4 flex justify-between pt-1'
         onMouseEnter={() => {
           setShowOptionsBtn(true);
         }}
@@ -83,24 +67,21 @@ const VideoCard = (props) => {
           }
         }}
       >
-        <img
-          alt='channel-logo'
-          src={logo ? logo : channel_logo}
-          className='w-10 self-start rounded-full'
-        />
-
-        <div className='w-5/6 mx-2'>
-          <h3 className='line-clamp-2 font-semibold leading-6 text-lg'>
-            {title}
-          </h3>
-          <h3 className='line-clamp-2 leading-5 text-sm text-[#606060]'>
-            {channelTitle}
-          </h3>
-          <h3 className='line-clamp-2 leading-5 text-sm text-[#606060]'>
-            <span>{viewStr} views</span>
-            <span className='text-[8px] mx-1'> &#9679; </span>
-            <span>{publishedDateStr}</span>
-          </h3>
+        <div className='w-5/6 px-3'>
+          <h3 className='line-clamp-2 leading-6 text-lg'>{title}</h3>
+          <div className='flex'>
+            <h3 className='flex justify-center line-clamp-2 leading-5 text-xs text-[#606060] mr-4'>
+              <span>{channelTitle}</span>
+              <img
+                alt='verified'
+                src={youtube_verified}
+                className='w-3 ml-1 mx-2'
+              />
+              <span className='flex'>{viewStr} views</span>
+              <span className='text-[8px] mx-1'> &#9679; </span>
+              <span>{publishedDateStr}</span>
+            </h3>
+          </div>
         </div>
         <div className='w-10 justify-end relative'>
           {showOptionsBtn && (
@@ -110,9 +91,9 @@ const VideoCard = (props) => {
                 setShowOptionsBtn(true);
                 setShowOptionsMenu(!showOptionsMenu);
               }}
-              className='hover:bg-slate-200 rounded-full'
+              className='hover:bg-slate-100 rounded-full'
             >
-              <img alt='options' src={option} className='w-12' />
+              <img alt='options' src={option} className='w-7' />
             </button>
           )}
           {showOptionsMenu && <VideoCardOption />}
@@ -122,4 +103,4 @@ const VideoCard = (props) => {
   );
 };
 
-export default VideoCard;
+export default VideoRow;

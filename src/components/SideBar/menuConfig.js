@@ -2,7 +2,7 @@ import Home from './../../assets/home-button-icon.svg';
 import Shorts from './../../assets/shorts-icon.svg';
 import Subscriptions from './../../assets/subscription-icon.svg';
 import Library from './../../assets/library-icon.svg';
-import History from './../../assets/history-icon-2.svg';
+import History from './../../assets/history-icon.svg';
 
 const menuConfig = () => {
   return [

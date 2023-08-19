@@ -1,19 +1,21 @@
 import React from 'react';
+import VideoList from './VideoList';
+import CategoryHeader from './CategoryHeader';
 import trendingIcon from './../assets/trending-page-icon.svg';
-import BrowseChannels from './BrowseChannels/BrowseChannels';
+import videosConfig from './Home/videosData';
 
 const Trending = () => {
+
+  const videos = videosConfig(); 
+
   return (
-    <div className='w-10/12'>
-      <div id='header' className='w-full h-28 border flex'>
-        <div id='title' className='w-full flex items-center'>
-          <img alt='icon' src={trendingIcon} className='w-24 rounded-full' />
-          <h3 className='text-2xl mx-4'>Trending</h3>
-        </div>
-        <div id='subscribe-btn'>
-          <button>Subscribe</button>
-        </div>
-      </div>
+    <div className='w-full mx-auto ml-2'>
+      <CategoryHeader
+        title={'Trending'}
+        subscribeBtn={false}
+        icon={trendingIcon}
+      />
+      <VideoList info={videos} />
     </div>
   );
 };

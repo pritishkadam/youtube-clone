@@ -8,14 +8,16 @@ const MenuButtonsList = (props) => {
     <>
       {sectionTitle && <SectionTitle sectionTitle={sectionTitle} />}
       {listItems &&
-        listItems.map((item) => {
+        listItems.map((item, index) => {
           const { title, icon, path, divider } = item;
           return (
-            <div>
+            <div key={index}>
               <NavLink
                 to={path}
                 className={({ isActive }) =>
-                  path && isActive ? 'rounded-lg font-semibold bg-slate-200' : ''
+                  isActive
+                    ? 'rounded-lg font-semibold bg-slate-200'
+                    : ''
                 }
               >
                 <MenuButton title={title} icon={icon} />
