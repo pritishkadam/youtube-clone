@@ -6,7 +6,7 @@ const videoCategoriesConfig = () => {
       {
         kind: 'youtube#videoCategory',
         etag: 'grPOPYEUUZN3ltuDUGEWlrTR90U',
-        id: '1',
+        id: '0',
         snippet: {
           title: 'All',
           assignable: true,
@@ -85,21 +85,11 @@ const videoCategoriesConfig = () => {
       },
       {
         kind: 'youtube#videoCategory',
-        etag: 'yBaNkLx4sX9NcDmFgAmxQcV4Y30',
-        id: '27',
+        etag: 'bQlQMjmYX7DyFkX4w3kT0osJyIc',
+        id: '25',
         snippet: {
-          title: 'Education',
+          title: 'News & Politics',
           assignable: true,
-          channelId: 'UCBR8-60-B28hp2BmDPdntcQ',
-        },
-      },
-      {
-        kind: 'youtube#videoCategory',
-        etag: 'Iqol1myDwh2AuOnxjtn2AfYwJTU',
-        id: '31',
-        snippet: {
-          title: 'Anime/Animation',
-          assignable: false,
           channelId: 'UCBR8-60-B28hp2BmDPdntcQ',
         },
       },

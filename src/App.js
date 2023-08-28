@@ -5,7 +5,7 @@ import store from './util/store';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import WatchPage from './components/Watch/WatchPage';
 import HomePage from './components/Home/HomePage';
-import SearchPage from './components/SearchPage';
+import SearchPage from './components/SearchPage/SearchPage';
 import ChannelPage from './components/ChannelPage';
 import Shorts from './components/Shorts';
 import Subscription from './components/Subscription';
@@ -15,7 +15,7 @@ import Trending from './components/Trending';
 import Shopping from './components/Shopping';
 import Music from './components/Music';
 import Movies from './components/Movies';
-import Live from './components/Live';
+import Live from './components/Live/Live';
 import Gaming from './components/Gaming';
 import News from './components/News';
 import Sports from './components/Sports';
@@ -55,7 +55,7 @@ const App = () => {
           element: <Trending />,
         },
         {
-          path: 'Shopping',
+          path: 'shopping',
           element: <Shopping />,
         },
         {

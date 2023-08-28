@@ -5,7 +5,7 @@ import SideBar from './SideBar';
 
 const SideBarContainer = () => {
   const isMenuOpen = useSelector((store) => store.nav.isMenuOpen);
-  return <div>{isMenuOpen ? <SideBar /> : <></>}</div>;
+  return <div>{isMenuOpen ? <SideBar /> : <MiniSideBar />}</div>;
 };
 
 export default SideBarContainer;

@@ -4,7 +4,6 @@ import ChannelCards from './ChannelCard';
 const ChannelCardsList = (props) => {
   const { config } = props;
   const { section, data, divider } = config;
-  console.log('Data: ', data);
   return (
     <div className='flex flex-col text-center mx-3 mt-1'>
       <div

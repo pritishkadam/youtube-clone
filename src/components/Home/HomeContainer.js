@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import ButtonList from './ButtonList';
 import VideoContainer from './VideoContainer';
-import videosConfig from './videosData';
 
 const HomeContainer = () => {
-  const [category, setCategory] = useState();
-  const videos = videosConfig();
+  const [categoryID, setCategoryID] = useState('0');
   return (
     <div className='w-full mx-auto'>
-      <ButtonList setCategory={setCategory} />
-      <VideoContainer info={videos} />
+      <ButtonList categoryID={categoryID} setCategoryID={setCategoryID} />
+      <VideoContainer categoryID={categoryID} />
     </div>
   );
 };

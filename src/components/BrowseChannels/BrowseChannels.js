@@ -15,8 +15,6 @@ const BrowseChannels = () => {
   const musicData = musicConfig();
   const cookingData = cookingConfig();
 
-  console.log('BestofYoutubeData: ', bestOfYoutubeData);
-
   return (
     <div className='w-10/12'>
       {bestOfYoutubeData && <ChannelCardsList config={bestOfYoutubeData} />}

@@ -10,7 +10,7 @@ const Movies = () => {
   return (
     <div className='w-full mx-auto ml-2'>
       <CategoryHeader title={'Movies'} details={details} subscribeBtn={false} icon={MoviesIcon} />
-      <VideoList info={videos} title={'New Music Videos'} />
+      <VideoList info={videos} title={''} />
     </div>
   );
 };

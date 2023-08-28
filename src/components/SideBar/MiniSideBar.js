@@ -9,13 +9,16 @@ const MiniSideBar = () => {
     <div className='w-20 flex flex-col'>
       {menuItems &&
         menuItems.length !== 0 &&
-        menuItems.map((element) => {
+        menuItems.map((element, index) => {
           const { title, icon, path } = element;
           return (
             <NavLink
+              key={index}
               to={path}
               className={({ isActive }) =>
-                path && isActive ? 'w-16 h-20 rounded-lg font-semibold bg-slate-200' : ''
+                path && isActive
+                  ? 'w-16 h-20 rounded-lg font-semibold bg-slate-200'
+                  : ''
               }
             >
               <MiniSideBarOption title={title} icon={icon} />

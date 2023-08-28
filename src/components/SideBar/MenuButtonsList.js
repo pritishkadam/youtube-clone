@@ -15,9 +15,7 @@ const MenuButtonsList = (props) => {
               <NavLink
                 to={path}
                 className={({ isActive }) =>
-                  isActive
-                    ? 'rounded-lg font-semibold bg-slate-200'
-                    : ''
+                  path && isActive ? 'w-11/12 h-10 rounded-lg font-semibold bg-slate-200' : ''
                 }
               >
                 <MenuButton title={title} icon={icon} />

@@ -24,31 +24,35 @@ const SearchSuggestionsList = (props) => {
 
   return (
     <>
-      {data && data.length !== 0 && (
+      {data && data.length !== 0 && searchQuery && (
         <div
           id='searchSuggestion'
-          className='absolute top-12 w-96 mt-1 bg-white border rounded-xl'
+          className='absolute top-12 w-full bg-white border rounded-xl'
         >
           {data?.map((element) => (
-            <div
-              key={element}
-              onMouseOver={() => {
-                handleMouseOver(element);
-              }}
-              onMouseLeave={() => {
-                setHoveredText('');
-              }}
-              onClick={() => {
-                handleSearchClick(element);
-              }}
-            >
-              <Link key={element} to={`/results?search_query=${element}`}>
-                <SearchSuggestionRow
-                  element={element}
-                  isQuerySearched={isQuerySearched}
-                />
-              </Link>
-            </div>
+            <>
+              {element && (
+                <div
+                  key={element}
+                  onMouseOver={() => {
+                    handleMouseOver(element);
+                  }}
+                  onMouseLeave={() => {
+                    setHoveredText('');
+                  }}
+                  onClick={() => {
+                    handleSearchClick(element);
+                  }}
+                >
+                  <Link key={element} to={`/results?search_query=${element}`}>
+                    <SearchSuggestionRow
+                      element={element}
+                      isQuerySearched={isQuerySearched}
+                    />
+                  </Link>
+                </div>
+              )}
+            </>
           ))}
         </div>
       )}

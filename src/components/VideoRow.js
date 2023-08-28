@@ -1,17 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { parse, serialize } from 'tinyduration';
-import channel_logo from './../assets/channel-logo.svg';
+import React, { useState } from 'react';
+import { parse } from 'tinyduration';
 import option from './../assets/three-dots-option.svg';
 import youtube_verified from './../assets/youtube_verified.svg';
 import getTimeStamp from './../util/getTimeStamp';
-import { YOUTUBE_CHANNEL_API } from './../util/constants';
 import VideoCardOption from './Home/VideoCardOption';
 import timeSince from '../util/timeSince';
 
 const VideoRow = (props) => {
   const { info } = props;
   const { id, snippet, statistics, contentDetails } = info;
-  const { channelId, channelTitle, title, thumbnails, publishedAt } = snippet;
+  const { channelTitle, title, thumbnails, publishedAt, description } = snippet;
   const { viewCount } = statistics;
   const { medium } = thumbnails;
   const { duration } = contentDetails;
@@ -19,7 +17,6 @@ const VideoRow = (props) => {
   const [showOptionsBtn, setShowOptionsBtn] = useState(false);
   const [showOptionsMenu, setShowOptionsMenu] = useState(false);
   const [showDuration, setShowDuration] = useState(true);
-  const [logo, setLogo] = useState(true);
 
   const publishedDate = new Date(publishedAt);
 
@@ -36,7 +33,7 @@ const VideoRow = (props) => {
     : 0;
 
   return (
-    <div className='w-full h-auto flex my-2 mx-5'>
+    <div key={id} className='w-full h-auto flex my-2 mx-5'>
       <div className='w-64 h-36 relative'>
         <img
           alt='thumbnail'
@@ -69,8 +66,8 @@ const VideoRow = (props) => {
       >
         <div className='w-5/6 px-3'>
           <h3 className='line-clamp-2 leading-6 text-lg'>{title}</h3>
-          <div className='flex'>
-            <h3 className='flex justify-center line-clamp-2 leading-5 text-xs text-[#606060] mr-4'>
+          <div className='flex flex-col'>
+            <h3 className='flex justify-start line-clamp-2 leading-5 text-xs text-[#606060] mr-4'>
               <span>{channelTitle}</span>
               <img
                 alt='verified'
@@ -80,6 +77,9 @@ const VideoRow = (props) => {
               <span className='flex'>{viewStr} views</span>
               <span className='text-[8px] mx-1'> &#9679; </span>
               <span>{publishedDateStr}</span>
+            </h3>
+            <h3 className='line-clamp-2 leading-5 text-xs text-[#606060] mr-4'>
+              {description}
             </h3>
           </div>
         </div>

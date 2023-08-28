@@ -5,10 +5,11 @@ import MenuButtonsList from './MenuButtonsList';
 import SignInButton from '../Header/SignInButton';
 import exploreSectionConfig from './exploreSectionConfig';
 import youtubeSectionConfig from './youtubeSectionConfig';
+import { useLocation } from 'react-router-dom';
 
 const SideBar = () => {
   const isMenuOpen = useSelector((store) => store.nav.isMenuOpen);
-
+  
   // Early Return
   if (!isMenuOpen) return null;
 
@@ -17,7 +18,7 @@ const SideBar = () => {
   const youtubeSectionItems = youtubeSectionConfig();
   
   return (
-    <nav className='w-56 py-3 max-h-screen overflow-hidden hover:overflow-y-scroll sticky top-14 pb-14'>
+    <nav className={`w-56 py-3 max-h-screen overflow-hidden hover:overflow-y-scroll sticky top-14 pb-14`}>
       <ul>
         <>
           {menuItems && <MenuButtonsList listItems={menuItems} />}

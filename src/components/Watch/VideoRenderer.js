@@ -5,7 +5,7 @@ const VideoRenderer = (props) => {
   return (
     <div>
       <iframe
-        className='w-[43rem] h-[25rem]'
+        className='w-full h-[28rem]'
         title={title}
         src={`https://www.youtube.com/embed/${videoId}`}
         frameborder='0'

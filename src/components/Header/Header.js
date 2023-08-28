@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import profile from './../../assets/profile.svg';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { YOUTUBE_SEARCH_API } from '../../util/constants';
+import { YOUTUBE_SEARCH_SUGGESTION_API } from '../../util/constants';
 import { cachedResults } from '../../util/cacheSearchSlice';
 import SearchBar from './SearchBar';
 import { toggle_menu } from '../../util/navSlice';
-import SearchSuggestionsList from './SearchSuggestionsList';
 import { searchedQueries } from '../../util/searchedQuerySlice';
 import Menu from './Menu';
 import Logo from './Logo';
@@ -23,12 +21,12 @@ const Header = () => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [callAPI, setCallAPI] = useState(false);
 
-  const getSearchSuggestions = async () => {
-    const response = await fetch(YOUTUBE_SEARCH_API + searchQuery);
+  const getSearchSuggestions = useCallback(async () => {
+    const response = await fetch(YOUTUBE_SEARCH_SUGGESTION_API + searchQuery);
     const data = await response.json();
     setSuggestions(data[1]);
     dispatch(cachedResults({ [searchQuery]: data[1] }));
-  };
+  }, [dispatch, searchQuery, setSuggestions]);
 
   useEffect(() => {
     if (callAPI) {
@@ -47,7 +45,7 @@ const Header = () => {
     if (searchQuery === '') {
       setSuggestions([]);
     }
-  }, [callAPI, searchQuery]);
+  }, [getSearchSuggestions, searchCache, callAPI, searchQuery]);
 
   /**
    * 1st key press - i
@@ -87,14 +85,8 @@ const Header = () => {
       </div>
 
       {/* Search Bar */}
-      <div
-        id='center'
-        className='flex w-8/12 justify-center gap-4'
-      >
-        <div
-          id='searchBar'
-          className='flex flex-col w-8/12 justify-center'
-        >
+      <div id='center' className='flex w-8/12 justify-center gap-4'>
+        <div id='searchBar' className='flex flex-col w-8/12 justify-center'>
           <SearchBar
             searchQuery={searchQuery}
             setSearchQuery={setSearchQuery}
@@ -103,26 +95,18 @@ const Header = () => {
             handleSearchClick={handleSearchClick}
             setCallAPI={setCallAPI}
             hoveredText={hoveredText}
+            suggestionsList={suggestions}
+            setHoveredText={setHoveredText}
+            searchedResults={searchedResults}
           />
-          {showSuggestions && (
-            <SearchSuggestionsList
-              searchQuery={searchQuery}
-              suggestionsList={suggestions}
-              setCallAPI={setCallAPI}
-              setSearchQuery={setSearchQuery}
-              handleSearchClick={handleSearchClick}
-              setHoveredText={setHoveredText}
-              searchedResults={searchedResults}
-            />
-          )}
         </div>
         <button
           onClick={() => {
             handleSearchClick(searchQuery);
           }}
-          className='w-10 h-10 bg-[#f8f8f8] px-2 py-2 rounded-full cursor-pointer'
+          className='w-10 h-10 bg-[#f8f8f8] px-2 py-2 rounded-full cursor-pointer hover:bg-slate-200'
         >
-          <img alt='search' src={mic} className='w-5 m-auto' />
+          <img alt='searchMic' src={mic} className='w-5 m-auto' />
         </button>
       </div>
 
