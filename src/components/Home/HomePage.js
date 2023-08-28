@@ -1,5 +1,4 @@
 import React from 'react';
-import MiniSideBar from '../SideBar/MiniSideBar';
 import HomeContainer from './HomeContainer';
 import { useSelector } from 'react-redux';
 

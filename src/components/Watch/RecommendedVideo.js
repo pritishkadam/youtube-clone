@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { parse, serialize } from 'tinyduration';
-import channel_logo from './../../assets/channel-logo.svg';
+import React, { useState } from 'react';
+import { parse } from 'tinyduration';
 import option from './../../assets/three-dots-option.svg';
 import getTimeStamp from './../../util/getTimeStamp';
-import { YOUTUBE_CHANNEL_API } from './../../util/constants';
 import timeSince from './../../util/timeSince';
 import VideoCardOption from '../Home/VideoCardOption';
 import youtube_verified from './../../assets/youtube_verified.svg';
@@ -12,7 +10,7 @@ import { Link } from 'react-router-dom';
 const RecommendedVideo = (props) => {
   const { info } = props;
   const { id, snippet, statistics, contentDetails } = info;
-  const { channelId, channelTitle, title, thumbnails, publishedAt } = snippet;
+  const { channelTitle, title, thumbnails, publishedAt } = snippet;
   const { viewCount } = statistics;
   const { medium } = thumbnails;
   const { duration } = contentDetails;

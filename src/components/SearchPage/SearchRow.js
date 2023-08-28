@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { parse } from 'tinyduration';
 import option from './../../assets/three-dots-option.svg';
 import youtube_verified from './../../assets/youtube_verified.svg';
