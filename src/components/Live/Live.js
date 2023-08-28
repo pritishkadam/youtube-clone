@@ -14,7 +14,10 @@ const Live = () => {
         icon={liveIcon}
         details={details}
       />
-      <LiveVideoContainer />
+      <hr className='h-1 bg-slate-300 my-6' />
+      <LiveVideoContainer title={'Live Now'} videoType={'live'} />
+      <LiveVideoContainer title={'Recent Live Streams'} videoType={'completed'} />
+      <LiveVideoContainer title={'Upcoming Live Streams'} videoType={'upcoming'} />
     </div>
   );
 };
