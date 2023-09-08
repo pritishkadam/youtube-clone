@@ -7,8 +7,9 @@ import ErrorPage from './ErrorPage';
 
 const VideoList = (props) => {
   const { info, title, categoryID } = props;
-  const [videos, setVideos] = useState([]);
+  const [videos, setVideos] = useState(null);
   const [fetching, setFetching] = useState(true);
+  const [error, setError] = useState(false);
 
   const getVideos = useCallback(
     async (categoryID) => {
@@ -16,14 +17,19 @@ const VideoList = (props) => {
         setFetching(false);
         setVideos(info.items);
       } else {
-        const url = `${YOUTUBE_URL}&videoCategoryId=${categoryID}`;
-        const response = await fetch(url);
-        setFetching(false);
-        if (response.status !== 200) {
-          setVideos(null);
-        } else {
-          const data = await response.json();
-          setVideos(data.items);
+        try {
+          const url = `${YOUTUBE_URL}&videoCategoryId=${categoryID}`;
+          const response = await fetch(url);
+          setFetching(false);
+          if (response.status !== 200) {
+            setVideos(null);
+            setError(true)
+          } else {
+            const data = await response.json();
+            setVideos(data.items);
+          }
+        } catch (e) {
+          setError(true);
         }
       }
     },
@@ -36,12 +42,11 @@ const VideoList = (props) => {
 
   if (videos && videos.length === 0) return null;
 
-  if (videos === null) return <ErrorPage />;
-
   return (
     <>
-      {fetching && <SkeletonList />}
-      {!fetching && (
+      {error && <ErrorPage />}
+      {videos === null && !error && <SkeletonList />}
+      {!fetching && !error && (
         <div className='w-10/12 flex flex-col my-2 font-roboto'>
           {title && (
             <div>

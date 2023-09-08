@@ -34,7 +34,7 @@ const LiveVideoContainer = (props) => {
 const CardSkeletonContainer = (props) => {
   return (
     <div id='card-container' className='flex gap-5'>
-      {Array(3)
+      {Array(4)
         .fill('')
         .map((el, index) => (
           <CardSkeleton key={index} />

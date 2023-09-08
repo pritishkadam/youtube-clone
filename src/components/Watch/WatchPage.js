@@ -6,6 +6,7 @@ import RecommendationListContainer from './RecommendationListContainer';
 import VideoContainer from './VideoContainer';
 import useGetVideoDetails from './useGetVideoDetails';
 import ErrorPage from '../ErrorPage';
+import WatchPageSkeleton from './WatchPageSkeleton';
 
 const WatchPage = () => {
   const [searchParams] = useSearchParams();
@@ -22,20 +23,6 @@ const WatchPage = () => {
     id
   );
 
-  // const getVideoDetails = async () => {
-  //   const response = await fetch(YOUTUBE_VIDEOS_URL + '&id=' + id);
-  //   if (response.status !== 200) {
-  //     setVideoDetails(null);
-  //   } else {
-  //     const data = await response.json();
-  //     setVideoDetails(data?.items[0]);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getVideoDetails();
-  // }, []);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -49,8 +36,9 @@ const WatchPage = () => {
     <div
       className={`w-full md:w-11/12 h-auto flex flex-col md:flex-row md:justify-center gap-6 mx-auto my-4 font-roboto`}
     >
+      {videoDetails === null && !error && <WatchPageSkeleton />}
       {error && <ErrorPage />}
-      {videoDetails && (
+      {videoDetails && !error && (
         <>
           <VideoContainer videoId={id} videoInfo={videoDetails} />
           <RecommendationListContainer />

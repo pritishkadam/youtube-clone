@@ -3,19 +3,26 @@ import { useSearchParams } from 'react-router-dom';
 import { YOUTUBE_SEARCH_API } from '../../util/constants';
 import SearchRowContainer from './SearchRowContainer';
 import ErrorPage from '../ErrorPage';
+import SearchSkeletonList from './SearchSkeletonList';
 
 const SearchResults = () => {
   const [searchParam] = useSearchParams();
   const query = searchParam.get('search_query');
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState(null);
+  const [error, setError] = useState(false);
 
   const getSearchResults = useCallback(async () => {
-    const response = await fetch(YOUTUBE_SEARCH_API + query);
-    if (response.status !== 200) {
-      setSearchResults(null);
-    } else {
-      const data = await response.json();
-      setSearchResults(data.items);
+    try {
+      const response = await fetch(YOUTUBE_SEARCH_API + query);
+      if (response.status !== 200) {
+        setSearchResults(null);
+        setError(true);
+      } else {
+        const data = await response.json();
+        setSearchResults(data.items);
+      }
+    } catch (e) {
+      setError(true);
     }
   }, [query, setSearchResults]);
 
@@ -23,9 +30,10 @@ const SearchResults = () => {
     getSearchResults();
   }, [getSearchResults]);
 
-  if (searchResults === null) return <ErrorPage />;
   return (
     <>
+      {error && <ErrorPage />}
+      {searchResults === null && !error && <SearchSkeletonList />}
       <div className='flex flex-col'>
         {searchResults &&
           searchResults.length !== 0 &&

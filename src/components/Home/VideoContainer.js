@@ -7,20 +7,22 @@ import videosConfig from './videosData';
 
 const VideoContainer = (props) => {
   const { categoryID } = props;
-  const [videos, setVideos] = useState([]);
-  const [fetching, setFetching] = useState(true);
+  const [videos, setVideos] = useState(null);
+  const [error, setError] = useState(false);
 
   const getVideos = useCallback(async (categoryID) => {
-    const url = `${YOUTUBE_URL}&videoCategoryId=${categoryID}`;
-    const response = await fetch(url);
-    setFetching(false);
-    if (response.status !== 200) {
-      const data = videosConfig();
-      setVideos(data.items);
-      // setVideos(null);
-    } else {
-      const data = await response.json();
-      setVideos(data.items);
+    try {
+      const url = `${YOUTUBE_URL}&videoCategoryId=${categoryID}`;
+      const response = await fetch(url);
+      if (response.status !== 200) {
+        const data = videosConfig();
+        setVideos(data.items);
+      } else {
+        const data = await response.json();
+        setVideos(data.items);
+      }
+    } catch (e) {
+      setError(true);
     }
   }, []);
 
@@ -30,11 +32,10 @@ const VideoContainer = (props) => {
 
   if (videos && videos.length === 0) return null;
 
-  if (videos === null) return <ErrorPage />;
-
   return (
     <>
-      {fetching && <CardSkeletonContainer count={12} />}
+      {error && <ErrorPage />}
+      {videos === null && !error && <CardSkeletonContainer count={18} />}
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:grid-flow-row-dense auto-cols-fr gap-x-4 gap-y-10 mx-4 m-auto'>
         {videos &&
           videos.map((video, index) => {

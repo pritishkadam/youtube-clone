@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Button from './Button';
-// import { VIDEO_CATEGORIES } from '../util/constants';
 import videoCategoriesConfig from './videoCategoriesConfig';
 
 const ButtonList = (props) => {
@@ -8,8 +7,6 @@ const ButtonList = (props) => {
   const [videoCategories, setVideoCategories] = useState([]);
 
   const getVideoCategories = async () => {
-    // const response = await fetch(VIDEO_CATEGORIES);
-    // const data = await response.json();
     const categories = videoCategoriesConfig();
     setVideoCategories(categories.items);
   };

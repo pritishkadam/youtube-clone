@@ -56,8 +56,7 @@ const VideoDetails = (props) => {
     if (dateString === '') {
       return '';
     }
-    // const date = new Date(dateString).toDateString();
-    // return date;
+
     const date = new Date(dateString).getDate();
     const month = new Date(dateString).toLocaleString('en-us', {
       month: 'short',
