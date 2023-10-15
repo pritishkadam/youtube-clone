@@ -4,7 +4,7 @@ This project is a YouTube Clone built using React.js, React Redux Toolkit, Tailw
 
 ## Screenshots
 
-![YouTube Home Page.](/Youtube_Clone_Home.png"YouTube Home Page")
+![YouTube Home Page.](/Youtube_Clone_Home.png "YouTube Home Page")
 
 ## Tools/Packages Used
 
