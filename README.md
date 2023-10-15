@@ -1,70 +1,97 @@
-# Getting Started with Create React App
+# YouTube Clone - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a YouTube Clone built using React.js, React Redux Toolkit, Tailwind CSS and many other tools.
 
-## Available Scripts
+## Screenshots
 
-In the project directory, you can run:
+![YouTube Home Page.](/Youtube_Clone_Home.png"YouTube Home Page")
 
-### `npm start`
+## Tools/Packages Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- React
+- Redux Toolkit
+- React Router DOM
+- Create React App
+- Tailwind CSS
+- YouTube APIs
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+- Home Page: Displays list of videos with their details, such as video title, duration type and channel name
+- Shimmer UI: Loading screen which provides better User Experience
+- Watch Page: Displays the user selected video
+- Side Bar Menu: Allows user to explore different pages/options
+- Search Functionality: Allow users to search for videos or channels and provides a list of suggestions
+- Comment Section: Displays list of comments under a video on Watch Page
+- Live Videos: List of live videos
+- Filtered Options: Filter videos on Home Page based on specific category
+- Caching Suggestions: Suggestions are cached in order to reduce the number of API calls
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### NOTE:
 
-### `npm run build`
+1. Since, YouTube APIs have a quota limit, hence users might come across an error 'Sorry for the inconvenience but something's wrong at our end', once they go beyond that limit.
+2. Some of the Category specific page will list videos of different category just to make use of Config Driven UI and populate the UI.
+3. Authentication features are not added.
+4. Due to quota limit, the comments are coming in from a config
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Future Improvements/Additions
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Authentication
+- Fetching more YouTube videos based on Infinite Scroll
+- Comments Section for Live Videos
+- Fully Responsive
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Tech Stack
 
-### `npm run eject`
+- React: JS Library for building user interfaces
+- Redux Toolkit: A centralized state management tool
+- React Router DOM: A npm package for routing
+- Create-React-App: A tool to create and run React projects quickly
+- Tailwind CSS: A utility first CSS framework for styling our application
+- YouTube APIs
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Dependencies
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+| npm modules      |
+| ---------------- |
+| react            |
+| reduxjs/toolkit  |
+| react-dom        |
+| react-redux      |
+| react-router-dom |
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Getting Started
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Prerequisites
 
-## Learn More
+- Node.js and npm should be installed on your machine
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Installation
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Clone the repository
 
-### Code Splitting
+```
+https://github.com/pritishkadam/youtube-clone.git
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2. Change into the project directory
 
-### Analyzing the Bundle Size
+```
+cd youtube-clone
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+3. Install the dependencies
 
-### Making a Progressive Web App
+```
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+4. Start the development server
 
-### Advanced Configuration
+```
+npm run start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+5. Open your browser and visit [http://localhost:3000](http://localhost:3000) to see the app running.
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+##### NOTE: In order to experience the full range of features offered by this application, it is essential to install the necessary external dependencies
