@@ -2,6 +2,8 @@
 
 This project is a YouTube Clone built using React.js, React Redux Toolkit, Tailwind CSS and many other tools.
 
+## Demo Link: [YouTube Clone](https://youtube-pritish.netlify.app/)
+
 ## Screenshots
 
 #### YouTube Home Page
