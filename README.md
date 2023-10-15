@@ -10,7 +10,7 @@ This project is a YouTube Clone built using React.js, React Redux Toolkit, Tailw
 
 #### YouTube Watch Page
 
-![YouTube Watch Page.](/Youtube_Watch_Page.png "YouTube Watch Page")
+![YouTube Watch Page.](/YouTube_Watch_Page.png "YouTube Watch Page")
 
 ## Tools/Packages Used
 
