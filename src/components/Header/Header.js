@@ -58,7 +58,7 @@ const Header = () => {
    * - useEffect()
    * - start new timer and make an API call again after 200ms
    *
-   * 3rd key press - ip (if key pressed before 200ms)
+   * 3rd key press - iph (if key pressed before 200ms)
    * - re-render the component(destroy the existing component, so run the clearTimeout to remove the existing timer and then re-render)
    * - useEffect()
    * - start new timer and make an API call again after 200ms

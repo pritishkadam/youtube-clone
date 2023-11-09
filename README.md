@@ -29,8 +29,8 @@ This project is a YouTube Clone built using React.js, React Redux Toolkit, Tailw
 - Shimmer UI: Loading screen which provides better User Experience
 - Watch Page: Displays the user selected video
 - Side Bar Menu: Allows user to explore different pages/options
-- Search Functionality: Allow users to search for videos or channels and provides a list of suggestions
-- Comment Section: Displays list of comments under a video on Watch Page
+- Search Functionality: Allow users to search for videos or channels and provides a list of suggestions. The Search Functionality uses debouncing and caching mechanism to reduce the number of API calls thereby improving the performance.
+- Comment Section: Displays list of comments under a video on Watch Page. The Comment Section uses Recursion to display nested level of comments
 - Live Videos: List of live videos
 - Filtered Options: Filter videos on Home Page based on specific category
 - Caching Suggestions: Suggestions are cached in order to reduce the number of API calls
