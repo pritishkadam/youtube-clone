@@ -2,8 +2,8 @@ import React, { useCallback, useEffect, useState } from 'react';
 import VideoRow from './VideoRow';
 import { Link } from 'react-router-dom';
 import SkeletonList from './SkeletonList';
-import { YOUTUBE_URL } from '../util/constants';
-import ErrorPage from './ErrorPage';
+import { YOUTUBE_URL } from '../../util/constants';
+import ErrorPage from '../ErrorPage';
 
 const VideoList = (props) => {
   const { info, title, categoryID } = props;
@@ -23,7 +23,7 @@ const VideoList = (props) => {
           setFetching(false);
           if (response.status !== 200) {
             setVideos(null);
-            setError(true)
+            setError(true);
           } else {
             const data = await response.json();
             setVideos(data.items);

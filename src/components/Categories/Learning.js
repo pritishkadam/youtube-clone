@@ -1,7 +1,7 @@
 import React from 'react';
 import LearningIcon from './../assets/channels/best_of_youtube/learning.svg';
 import CategoryHeader from './CategoryHeader';
-import VideoContainer from './Home/VideoContainer';
+import VideoContainer from '../Home/VideoContainer';
 
 const Learning = () => {
   const details = '';

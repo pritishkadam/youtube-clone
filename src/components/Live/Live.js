@@ -1,5 +1,5 @@
 import React from 'react';
-import CategoryHeader from '../CategoryHeader';
+import CategoryHeader from '../Categories/CategoryHeader';
 import liveIcon from './../../assets/channels/best_of_youtube/live.svg';
 import LiveVideoContainer from './LiveVideoContainer';
 

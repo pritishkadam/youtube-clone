@@ -1,7 +1,7 @@
 import React from 'react';
 import SportsIcon from './../assets/channels/best_of_youtube/sports.svg';
 import CategoryHeader from './CategoryHeader';
-import VideoContainer from './Home/VideoContainer';
+import VideoContainer from '../Home/VideoContainer';
 
 const Sports = () => {
   const details = '119M subscribers';

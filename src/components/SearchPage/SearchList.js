@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import VideoRow from '../VideoRow';
 import SearchRow from './SearchRow';
 
 const SearchList = (props) => {

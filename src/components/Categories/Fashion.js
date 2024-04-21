@@ -1,7 +1,7 @@
 import React from 'react';
 import FashionIcon from './../assets/channels/best_of_youtube/fashion.svg';
 import CategoryHeader from './CategoryHeader';
-import VideoContainer from './Home/VideoContainer';
+import VideoContainer from '../Home/VideoContainer';
 
 const Fashion = () => {
   const details = '1.53M subscribers';
