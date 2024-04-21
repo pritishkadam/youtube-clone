@@ -1,7 +1,7 @@
 import React from 'react';
-import GamingIcon from './../assets/channels/best_of_youtube/gaming.svg';
+import GamingIcon from './../../assets/channels/best_of_youtube/gaming.svg';
 import CategoryHeader from './CategoryHeader';
-import VideoContainer from './Home/VideoContainer';
+import VideoContainer from './../Home/VideoContainer';
 
 const Gaming = () => {
   const details = '93.7M subscribers';

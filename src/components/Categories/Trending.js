@@ -1,7 +1,7 @@
 import React from 'react';
 import VideoList from './VideoList';
 import CategoryHeader from './CategoryHeader';
-import trendingIcon from './../assets/trending-page-icon.svg';
+import trendingIcon from './../../assets/trending-page-icon.svg';
 
 const Trending = () => {
 

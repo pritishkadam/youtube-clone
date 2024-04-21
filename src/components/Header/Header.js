@@ -22,10 +22,14 @@ const Header = () => {
   const [callAPI, setCallAPI] = useState(false);
 
   const getSearchSuggestions = useCallback(async () => {
-    const response = await fetch(YOUTUBE_SEARCH_SUGGESTION_API + searchQuery);
-    const data = await response.json();
-    setSuggestions(data[1]);
-    dispatch(cachedResults({ [searchQuery]: data[1] }));
+    try {
+      const response = await fetch(YOUTUBE_SEARCH_SUGGESTION_API + searchQuery);
+      const data = await response.json();
+      setSuggestions(data[1]);
+      dispatch(cachedResults({ [searchQuery]: data[1] }));
+    } catch (e) {
+      setSuggestions([]);
+    }
   }, [dispatch, searchQuery, setSuggestions]);
 
   useEffect(() => {

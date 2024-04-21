@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { parse } from 'tinyduration';
-import option from './../assets/three-dots-option.svg';
-import youtube_verified from './../assets/youtube_verified.svg';
-import getTimeStamp from './../util/getTimeStamp';
-import VideoCardOption from './Home/VideoCardOption';
-import timeSince from '../util/timeSince';
+import option from './../../assets/three-dots-option.svg';
+import youtube_verified from './../../assets/youtube_verified.svg';
+import getTimeStamp from './../../util/getTimeStamp';
+import VideoCardOption from './../Home/VideoCardOption';
+import timeSince from './../../util/timeSince';
 
 const VideoRow = (props) => {
   const { info } = props;
@@ -17,6 +17,8 @@ const VideoRow = (props) => {
   const [showOptionsBtn, setShowOptionsBtn] = useState(false);
   const [showOptionsMenu, setShowOptionsMenu] = useState(false);
   const [showDuration, setShowDuration] = useState(true);
+
+  const [imgError, setImgError] = useState(false);
 
   const publishedDate = new Date(publishedAt);
 
@@ -32,20 +34,32 @@ const VideoRow = (props) => {
       }).format(viewCount)
     : 0;
 
+  const onImageError = () => {
+    setImgError(true);
+  };
+
   return (
     <div key={id} className='w-full h-auto flex my-2 mx-5'>
       <div className='w-64 h-36 relative'>
-        <img
-          alt='thumbnail'
-          src={medium.url}
-          className='w-full h-full rounded-2xl object-cover bg-transparent hover:rounded-none'
-          onMouseEnter={() => {
-            setShowDuration(false);
-          }}
-          onMouseOut={() => {
-            setShowDuration(true);
-          }}
-        />
+        {imgError && (
+          <div className='w-full h-full rounded-2xl text-center my-auto object-cover bg-gray-200 text-gray-400 font-medium'>
+            NO IMAGE
+          </div>
+        )}
+        {!imgError && (
+          <img
+            alt='thumbnail'
+            src={medium.url}
+            className='w-full h-full rounded-2xl object-cover bg-transparent hover:rounded-none'
+            onMouseEnter={() => {
+              setShowDuration(false);
+            }}
+            onMouseOut={() => {
+              setShowDuration(true);
+            }}
+            onError={onImageError}
+          />
+        )}
 
         {showDuration && (
           <h3 className='h-4 font-medium text-xs bg-[#000c] text-white inline rounded-md px-1 absolute bottom-2 right-2'>

@@ -26,13 +26,17 @@ const VideoCard = (props) => {
   const publishedDateStr = timeSince(publishedDate);
 
   const getChannelDetails = useCallback(async () => {
-    const url = YOUTUBE_CHANNEL_API.replace('CHANNEL_ID', channelId);
-    const response = await fetch(url);
-    if (response.status !== 200) {
+    try {
+      const url = YOUTUBE_CHANNEL_API.replace('CHANNEL_ID', channelId);
+      const response = await fetch(url);
+      if (response.status !== 200) {
+        throw new Error('Something went wrong!');
+      } else {
+        const data = await response.json();
+        setLogo(data?.items[0]?.snippet?.thumbnails?.default?.url);
+      }
+    } catch (e) {
       setLogo(channel_logo);
-    } else {
-      const data = await response.json();
-      setLogo(data?.items[0]?.snippet?.thumbnails?.default?.url);
     }
   }, [channelId, setLogo]);
 

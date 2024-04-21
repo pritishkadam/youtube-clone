@@ -20,22 +20,26 @@ const VideoDetails = (props) => {
   const showDescriptionText = showMore ? 'Show less' : 'Show more';
 
   const getChannelDetails = useCallback(async () => {
-    const url = YOUTUBE_CHANNEL_API.replace('CHANNEL_ID', channelId);
-    const response = await fetch(url);
-    if (response.status !== 200) {
+    try {
+      const url = YOUTUBE_CHANNEL_API.replace('CHANNEL_ID', channelId);
+      const response = await fetch(url);
+      if (response.status !== 200) {
+        throw new Error('Something went wrong!');
+      } else {
+        const data = await response.json();
+        setLogo(data?.items[0]?.snippet?.thumbnails?.default?.url);
+        const subscribers = data?.items[0]?.statistics?.subscriberCount;
+        const subscriberStr = subscribers
+          ? new Intl.NumberFormat('en-GB', {
+              notation: 'compact',
+              compactDisplay: 'short',
+            }).format(subscribers)
+          : 0;
+        setSubscriberCount(subscriberStr);
+      }
+    } catch (e) {
       setLogo(channel_logo);
       setSubscriberCount('0');
-    } else {
-      const data = await response.json();
-      setLogo(data?.items[0]?.snippet?.thumbnails?.default?.url);
-      const subscribers = data?.items[0]?.statistics?.subscriberCount;
-      const subscriberStr = subscribers
-        ? new Intl.NumberFormat('en-GB', {
-            notation: 'compact',
-            compactDisplay: 'short',
-          }).format(subscribers)
-        : 0;
-      setSubscriberCount(subscriberStr);
     }
   }, [channelId, setLogo, setSubscriberCount]);
 

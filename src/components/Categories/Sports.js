@@ -1,5 +1,5 @@
 import React from 'react';
-import SportsIcon from './../assets/channels/best_of_youtube/sports.svg';
+import SportsIcon from './../../assets/channels/best_of_youtube/sports.svg';
 import CategoryHeader from './CategoryHeader';
 import VideoContainer from '../Home/VideoContainer';
 

@@ -1,7 +1,7 @@
 import React from 'react';
-import NewsIcon from './../assets/channels/best_of_youtube/news.svg';
+import NewsIcon from './../../assets/channels/best_of_youtube/news.svg';
 import CategoryHeader from './CategoryHeader';
-import VideoContainer from './Home/VideoContainer';
+import VideoContainer from './../Home/VideoContainer';
 
 const News = () => {
   const details = '';

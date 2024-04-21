@@ -1,5 +1,5 @@
 import React from 'react';
-import FashionIcon from './../assets/channels/best_of_youtube/fashion.svg';
+import FashionIcon from './../../assets/channels/best_of_youtube/fashion.svg';
 import CategoryHeader from './CategoryHeader';
 import VideoContainer from '../Home/VideoContainer';
 

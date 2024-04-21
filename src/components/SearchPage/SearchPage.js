@@ -15,13 +15,13 @@ const SearchResults = () => {
     try {
       const response = await fetch(YOUTUBE_SEARCH_API + query);
       if (response.status !== 200) {
-        setSearchResults(null);
-        setError(true);
+        throw new Error('Something went wrong!');
       } else {
         const data = await response.json();
         setSearchResults(data.items);
       }
     } catch (e) {
+      setSearchResults(null);
       setError(true);
     }
   }, [query, setSearchResults]);

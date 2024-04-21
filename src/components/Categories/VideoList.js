@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import VideoRow from './VideoRow';
 import { Link } from 'react-router-dom';
-import SkeletonList from './SkeletonList';
+import SkeletonList from './../Skeleton/SkeletonList';
 import { YOUTUBE_URL } from '../../util/constants';
 import ErrorPage from '../ErrorPage';
 
@@ -22,14 +22,15 @@ const VideoList = (props) => {
           const response = await fetch(url);
           setFetching(false);
           if (response.status !== 200) {
-            setVideos(null);
-            setError(true);
+            throw new Error('Something went wrong!')
           } else {
             const data = await response.json();
             setVideos(data.items);
           }
         } catch (e) {
+          setFetching(false);
           setError(true);
+          setVideos(null);
         }
       }
     },

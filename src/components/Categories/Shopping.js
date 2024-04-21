@@ -1,7 +1,7 @@
 import React from 'react';
 import CategoryHeader from './CategoryHeader';
 import VideoList from './VideoList';
-import shoppingIcon from './../assets/shopping-page-icon.svg';
+import shoppingIcon from './../../assets/shopping-page-icon.svg';
 
 const Shopping = () => {
 

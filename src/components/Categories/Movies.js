@@ -1,7 +1,7 @@
 import React from 'react';
 import CategoryHeader from './CategoryHeader';
 import VideoList from './VideoList';
-import MoviesIcon from './../assets/movies-page-icon.svg';
+import MoviesIcon from './../../assets/movies-page-icon.svg';
 import musicVideosConfig from '../../util/musicVideosConfig';
 
 const Movies = () => {

@@ -11,17 +11,17 @@ import Shorts from './components/Shorts';
 import Subscription from './components/Subscription';
 import Library from './components/Library';
 import History from './components/History';
-import Trending from './components/Trending';
-import Shopping from './components/Shopping';
-import Music from './components/Music';
-import Movies from './components/Movies';
 import Live from './components/Live/Live';
-import Gaming from './components/Gaming';
-import News from './components/News';
-import Sports from './components/Sports';
-import Learning from './components/Learning';
-import Fashion from './components/Fashion';
 import BrowseChannels from './components/BrowseChannels/BrowseChannels';
+import Trending from './components/Categories/Trending';
+import Shopping from './components/Categories/Shopping';
+import Music from './components/Categories/Music';
+import Movies from './components/Categories/Movies';
+import Gaming from './components/Categories/Gaming';
+import News from './components/Categories/News';
+import Sports from './components/Categories/Sports';
+import Learning from './components/Categories/Learning';
+import Fashion from './components/Categories/Fashion';
 
 const App = () => {
   const appRouter = createBrowserRouter([
@@ -49,7 +49,6 @@ const App = () => {
           path: 'history',
           element: <History />,
         },
-
         {
           path: 'trending',
           element: <Trending />,

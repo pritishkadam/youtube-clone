@@ -13,23 +13,31 @@ const SearchRowContainer = (props) => {
   const [logo, setLogo] = useState('');
 
   const getVideoDetails = useCallback(async () => {
-    const response = await fetch(YOUTUBE_VIDEOS_URL + '&id=' + videoId);
-    if (response.status !== 200) {
+    try {
+      const response = await fetch(YOUTUBE_VIDEOS_URL + '&id=' + videoId);
+      if (response.status !== 200) {
+        throw new Error('Something went wrong!');
+      } else {
+        const data = await response.json();
+        setVideoDetails(data?.items[0]);
+      }
+    } catch (e) {
       setVideoDetails(null);
-    } else {
-      const data = await response.json();
-      setVideoDetails(data?.items[0]);
     }
   }, [videoId, setVideoDetails]);
 
   const getChannelDetails = useCallback(async () => {
-    const url = YOUTUBE_CHANNEL_API.replace('CHANNEL_ID', channelId);
-    const response = await fetch(url);
-    if (response.status !== 200) {
+    try {
+      const url = YOUTUBE_CHANNEL_API.replace('CHANNEL_ID', channelId);
+      const response = await fetch(url);
+      if (response.status !== 200) {
+        throw new Error('Something went wrong!');
+      } else {
+        const data = await response.json();
+        setLogo(data?.items[0]?.snippet?.thumbnails?.default?.url);
+      }
+    } catch (e) {
       setLogo(channel_logo);
-    } else {
-      const data = await response.json();
-      setLogo(data?.items[0]?.snippet?.thumbnails?.default?.url);
     }
   }, [channelId, setLogo]);
 

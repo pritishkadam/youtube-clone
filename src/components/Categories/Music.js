@@ -1,8 +1,8 @@
 import React from 'react';
 import VideoList from './VideoList';
 import CategoryHeader from './CategoryHeader';
-import MusicIcon from './../assets/channels/best_of_youtube/music.svg';
-import musicVideosConfig from '../util/musicVideosConfig';
+import MusicIcon from './../../assets/channels/best_of_youtube/music.svg';
+import musicVideosConfig from './../../util/musicVideosConfig';
 
 const Music = () => {
   const videos = musicVideosConfig();
